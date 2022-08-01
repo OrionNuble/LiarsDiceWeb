@@ -5,6 +5,8 @@ let DiceFour = document.getElementById("DiceFourImgId");
 let DiceFive = document.getElementById("DiceFiveImgId");
 let DiceSix = document.getElementById("DiceSixImgId");
 
+let THE_BID = document.getElementById("BID_HOLDER");
+
 let OneDice = "OneRolledDice.png";
 let TwoDice = "TwoRolledDice.png";
 let ThreeDice = "ThreeRolledDice.png";
@@ -20,6 +22,14 @@ let DiceImgs = [];
 let letDiceElements = [];
 let letDiceElementsLabels = [];
 
+let TotalCount = 15;
+const TotalDice = 6;
+
+let PreviousBid = "";
+let SuggestedBid = "";
+
+let IsBidValid = false;
+
 let RemainingDice = 6;
 
 letDiceElements.push(DiceOne);
@@ -29,19 +39,47 @@ letDiceElements.push(DiceFour);
 letDiceElements.push(DiceFive);
 letDiceElements.push(DiceSix);
 
-letDiceElementsLabels.push(DiceOneLabel);
-letDiceElementsLabels.push(DiceTwoLabel);
-letDiceElementsLabels.push(DiceThreeLabel);
-letDiceElementsLabels.push(DiceFourLabel);
-letDiceElementsLabels.push(DiceFiveLabel);
-letDiceElementsLabels.push(DiceSixLabel);
-
 DiceImgs.push(OneDice);
 DiceImgs.push(TwoDice);
 DiceImgs.push(ThreeDice);
 DiceImgs.push(FourDice);
 DiceImgs.push(FiveDice);
 DiceImgs.push(SixDice);
+
+function SetBidOptions(){
+
+    let HowMany = document.getElementById("HowMany");
+
+    console.log(TotalCount);
+
+    for (let i = 0; i < TotalCount; i++){
+
+        let newOpt = document.createElement("option");
+        newOpt.value = (i + 1).toString();
+        newOpt.innerHTML = (i + 1).toString();
+        HowMany.options.add(newOpt);
+
+    }
+
+}
+
+function CheckValidity(){
+
+    let HowMany = document.getElementById("HowMany");
+    let Which = document.getElementById("WhichDice");
+
+    
+
+
+
+}
+
+function Load(){
+
+    SetBidOptions();
+    RollDice();
+
+}
 
 function HowManyTimesRepeated(Value, Array){
 
@@ -59,6 +97,22 @@ function HowManyTimesRepeated(Value, Array){
     }
 
     return Count;
+
+}
+
+function UpdateDices(){
+
+    for(let j = 0; j < RemainingDice; j++){
+
+        letDiceElements[j].src = DiceImgs[DiceValues[j] - 1];
+
+    }
+
+    for(let h = 0; h < 6 - RemainingDice; h++){
+
+        letDiceElements[h + RemainingDice].src = EmptyDice;
+
+    }
 
 }
 
@@ -81,17 +135,7 @@ function RollDice(){
 
     }
 
-    for(let j = 0; j < RemainingDice; j++){
-
-        letDiceElements[j].src = DiceImgs[DiceValues[j] - 1];
-
-    }
-
-    for(let h = 0; h < 6 - RemainingDice; h++){
-
-        letDiceElements[h + RemainingDice].src = EmptyDice;
-
-    }
+    UpdateDices();
 
 }
 
@@ -100,5 +144,27 @@ function LoseDice(){
 
     RemainingDice--;
 
+    UpdateDices();
+
+
+}
+
+function BID(){
+
+    let CountSelect = document.getElementById("HowMany");
+    let DiceValueSelect = document.getElementById("WhichDice");
+
+    IsBidValid = CheckValidity(CountSelect.value, DiceValueSelect.value);
+
+    if(IsBidValid){
+
+        
+
+    }
+    else{
+
+        document.getElementById("BID_Validity").innerHTML = "Kural Dişi Iddia";
+
+    }
 
 }

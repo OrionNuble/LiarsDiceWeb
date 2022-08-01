@@ -7,7 +7,7 @@
     <title>Liar's Dice</title>
     <script type="text/javascript" src="index.js" defer></script>
 </head>
-<body>
+<body onload="Load()">
 
     <div class="parent">
 
@@ -15,6 +15,24 @@
         
             <button id="RollDiceButton" onclick="RollDice()">Zar At</button>
             <button id="RollDiceButton" onclick="LoseDice()">Zar Kaybet</button>
+
+            <label>Zardan kaç tane var?</label>
+            <select id="HowMany" name="HowManyDices" onchange="CheckValidity()">
+            </select>
+
+            <label>Hangi Zar?</label>
+            <select id="WhichDice" name="Dice" onchange="CheckValidity()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+            </select>
+
+            <button id="BID_B" onclick="BID()">Iddia Et</button>
+
+            <label id="BID_Validity"></label>
         
         </div>
         
@@ -30,6 +48,8 @@
         </div>
 
     </div>
+
+    <iframe src="BidHTML.html" frameborder="0" style="display: none;"></iframe>
 
     <link rel="stylesheet" href="style.css">
 </body>
