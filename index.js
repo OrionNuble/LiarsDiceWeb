@@ -63,13 +63,81 @@ function SetBidOptions(){
 
 }
 
-function CheckValidity(){
+function parseBid(ParsedIndex, BidID, BID){
 
-    let HowMany = document.getElementById("HowMany");
-    let Which = document.getElementById("WhichDice");
+    let BID_Pair = [];
 
-    
+    if(BidId = "Prev" && ParsedIndex > -1 && ParsedIndex < 2){
 
+
+        BID_Pair = PreviousBid.split("x");
+
+
+        return parseInt(BID_Pair[ParsedIndex]);
+
+    }
+
+}
+
+function CheckValidity(Rule){
+
+    let HowManyStr = document.getElementById("HowMany");
+    let WhichStr = document.getElementById("WhichDice");
+
+    let HowMany = parseInt(HowManyStr);
+    let Which = parseInt(WhichStr);
+
+    let PreviousHowMany = parseBid(0, "Prev", "");
+    let PreviousWhich = parseBid(1, "Prev", "");
+
+    if(Rule == "S"){
+
+        if(HowMany > PreviousHowMany && Which == PreviousWhich){
+
+            return true;
+
+        }
+        else{
+
+            return false;
+
+        }
+
+    }
+    else if(Rule == "V"){
+
+        if(HowMany > PreviousHowMany){
+
+            return true;
+
+        }
+        else if(HowMany == PreviousHowMany && Which > PreviousWhich){
+
+            return true;
+
+        }
+        else if(HowMany > PreviousHowMany && Which == PreviousWhich){
+
+            return true;
+
+        }
+        else if(Which > PreviousWhich){
+
+            return true;
+
+        }
+        else{
+
+            return false;
+
+        }
+
+    }
+    else{
+
+        return false;
+
+    }
 
 
 }
@@ -154,7 +222,7 @@ function BID(){
     let CountSelect = document.getElementById("HowMany");
     let DiceValueSelect = document.getElementById("WhichDice");
 
-    IsBidValid = CheckValidity(CountSelect.value, DiceValueSelect.value);
+    IsBidValid = CheckValidity("S");
 
     if(IsBidValid){
 
