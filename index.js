@@ -4,6 +4,7 @@ let DiceThree = document.getElementById("DiceThreeImgId");
 let DiceFour = document.getElementById("DiceFourImgId");
 let DiceFive = document.getElementById("DiceFiveImgId");
 let DiceSix = document.getElementById("DiceSixImgId");
+let BidImg = document.getElementById("BID_Dice");
 
 let THE_BID = document.getElementById("BID_HOLDER");
 
@@ -222,13 +223,16 @@ function BID(){
     let CountSelect = document.getElementById("HowMany");
     let DiceValueSelect = document.getElementById("WhichDice");
 
-    IsBidValid = CheckValidity("S");
+    IsBidValid = CheckValidity("V");
+    IsBidValid = true;
 
-    let BID_STR = "";
+    let BID_STR = CountSelect.value + "x";
 
     if(IsBidValid){
 
         document.getElementById("LatestBID").innerHTML = BID_STR;
+        BidImg.src = DiceImgs[parseInt(DiceValueSelect.value) - 1];
+
 
     }
     else{
