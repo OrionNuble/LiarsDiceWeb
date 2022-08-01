@@ -224,9 +224,11 @@ function BID(){
 
     IsBidValid = CheckValidity("S");
 
+    let BID_STR = "";
+
     if(IsBidValid){
 
-        
+        document.getElementById("LatestBID").innerHTML = BID_STR;
 
     }
     else{
