@@ -1,0 +1,23 @@
+.parent{
+
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+
+}
+
+.Values{
+
+    align-items: top;
+    width: 25%;
+    margin: 0 auto;
+
+}
+
+.Images{
+
+    align-items: baseline;
+    width: 25%;
+    margin: 0 auto;
+
+}
