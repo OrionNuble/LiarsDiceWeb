@@ -5,13 +5,6 @@ let DiceFour = document.getElementById("DiceFourImgId");
 let DiceFive = document.getElementById("DiceFiveImgId");
 let DiceSix = document.getElementById("DiceSixImgId");
 
-let DiceOneLabel = document.getElementById("Ones");
-let DiceTwoLabel = document.getElementById("Twos");
-let DiceThreeLabel = document.getElementById("Threes");
-let DiceFourLabel = document.getElementById("Fours");
-let DiceFiveLabel = document.getElementById("Fives");
-let DiceSixLabel = document.getElementById("Sixes");
-
 let OneDice = "OneRolledDice.png";
 let TwoDice = "TwoRolledDice.png";
 let ThreeDice = "ThreeRolledDice.png";
@@ -97,14 +90,6 @@ function RollDice(){
     for(let h = 0; h < 6 - RemainingDice; h++){
 
         letDiceElements[h + RemainingDice].src = EmptyDice;
-
-    }
-
-    let Counts = ["Birler: ", "  || İkiler: ", "  || Üçler: ", "  || Dörtler: ", "  || Beşler: ", "  || Altilar: "];
-
-    for(let g = 0; g < letDiceElementsLabels.length; g++){
-    
-        letDiceElementsLabels[g].innerHTML = Counts[g] + HowManyTimesRepeated(g + 1, DiceValues).toString();
 
     }
 
